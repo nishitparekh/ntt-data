@@ -1,0 +1,46 @@
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <span class="spacing">&nbsp;</span>
+  <span>Welcome</span>
+</div>
+
+<div class="content" role="main">
+
+  <!-- Resources -->
+  <!-- <h2>Resources</h2>
+  <p>Here are some links to help you get started:</p> -->
+
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Status</th>
+      <th>Name</th>
+      <th>Date of Birth</th>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>Active &nbsp; <input type="checkbox" name="active" (change)="onActiveChange($event)" [checked]="status.active" [value]="status.active" /> &nbsp; 
+        Inactive &nbsp; <input type="checkbox" name="inactive" (change)="onInActiveChange($event)" [checked]="status.inactive" [value]="status.inactive" /> </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr *ngFor="let item of enrolleesList; index as i;">
+      <td>{{item.id}}</td>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span *ngIf="enableEdit">{{item.active}}</span>
+        <input *ngIf="!enableEdit" type="checkbox" [checked]="item.active" [value]="item.active" (change)="onStatusChange($event)" />
+      </td>
+      <td>
+        <span *ngIf="enableEdit">{{item.name}}</span> 
+        <input *ngIf="!enableEdit" type="text" (change)="onNameChange($event)" [value]="item.name" />
+      </td>
+      <td>{{item.dateOfBirth}}</td>
+      <td><button (click)="onEditRecord(i)" *ngIf="enableEdit">Edit</button> &nbsp;&nbsp;
+          <button *ngIf="!enableEdit" (click)="onUpdateRecord()">Update</button></td>
+    </tr>
+  </table>
+
+</div>
+
+<router-outlet></router-outlet>
