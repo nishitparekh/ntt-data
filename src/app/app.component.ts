@@ -63,9 +63,9 @@ export class AppComponent implements OnInit {
     }
   }
 
-  onEditRecord(i) {
-    this.selected = this.enrolleesList[i];
+  onEditRecord(i: number) {
     this.enableEdit = !this.enableEdit;
+    this.selected = this.enrolleesList[i];
   }
 
   onUpdateRecord() {
